@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    CONGRATS! YOU ARE CORRECT!
+
+    <h4>
+        You currently have a streak of {{streak}}. Keep playing to improve your streak!
+    </h4>
+{% endblock %}
+
+{% block main %}
+<div class="mt-4 p-5 bg-light text-black rounded">
+    <div>
+        <img src="/static/images/correct.gif" width="250" height="300">
+    </div>
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col">
+                <a href="/playgame"><h3>next</h3></a>
+            </div>
+            <div class="col">
+                <a href="/about"><h3>about</h3></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

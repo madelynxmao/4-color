@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Grid</title>
+    <style>
+        .button {
+            width: 50px;
+            height: 50px;
+            margin: 2px;
+        }
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    {% for row in buttons %}
+        {% for col in row %}
+            <button class="button {% if col %}active{% endif %}"></button>
+        {% endfor %}
+        <br>
+    {% endfor %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.button').click(function() {
+                var row = $(this).parent().index();
+                var col = $(this).index();
+                $.post('/button_click', {'row': row, 'col': col});
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+</body>
+</html>

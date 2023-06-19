@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    GUESS THAT CITY
+{% endblock %}
+
+{% block main %}
+
+
+<script>
+    function toggle_display_state(){
+        el = document.getElementById("state");
+        el.style.visibility = "visible";
+    }
+    function toggle_display_pop(){
+        el = document.getElementById("pop");
+        el.style.visibility = "visible";
+    }
+    function toggle_display_size(){
+        el = document.getElementById("size");
+        el.style.visibility = "visible";
+    }
+</script>
+
+<div class="mt-4 p-5 bg-light text-black rounded">
+    <div class="container">
+
+        <h4>{{city_funfact}}</h4>
+
+        <br>
+
+        <div style="visibility: hidden" id="state">
+            This city is located in {{city_state}}
+        </div>
+
+        <div style="visibility: hidden" id="pop">
+            This city has a population of {{pop_2020}}
+        </div>
+
+        <div style="visibility: hidden" id="size">
+            This city has a size of {{land_area_sqm}} square miles
+        </div>
+
+        <br>
+        
+
+        <button onclick= "toggle_display_state()">Tell me the state it's in</button>
+
+        <button onclick= "toggle_display_pop()">Tell me the population</button>
+
+        <button onclick= "toggle_display_size()">Tell me the size</button>
+
+
+        <form action="/playgame" method = "POST">
+            <p></p>
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="guess" name="guess" placeholder="Guess the City" type="text">
+            </div>
+            <p><input type = "submit" value = "Submit" /></p>
+        </form>
+        
+
+
+        <div class="row align-items-start">
+            <div class="col">
+                <a href="/"><h3>Back</h3></a>
+            </div>
+            <div class="col">
+                <a href="/about"><h3>about</h3></a>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+{% endblock %}
